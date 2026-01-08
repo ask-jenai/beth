@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>North Baptiste Lake Retreat | Maynooth, Ontario</title>
+<meta name="description" content="Escape to North Baptiste Lake Retreat in Maynooth, Ontario. Lakeside charm, cozy comforts, nearby beaches, markets, and year-round nature experiences." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
+<link rel="preload" as="image" href="hero.jpg" imagesrcset="hero.jpg 2000w" />
+
+<style>
+:root{
+  --custard:#DC9F2A; --cyclade:#8399B9; --tennis:#475418;
+  --warmwhite:#F7F6F2; --charcoal:#2E2E2E; --faqbg:#FBFAF7;
+  --maxw:1180px; --radius:16px; --shadow:0 10px 25px rgba(0,0,0,.08);
+  --accH:360px;
+
+  /* About chip sizing */
+  --chipH:48px;        /* set pill height here */
+  --icon:18px;         /* icon size */
+}
+@media(min-width:1200px){ :root{ --accH:400px; } }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--charcoal); background:var(--warmwhite);
+  font-family:"Lato",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans";
+  line-height:1.6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img{max-width:100%; height:auto}
+.section{width:100%}
+.container{max-width:var(--maxw); margin:auto; padding:64px 20px}
+.grid{display:grid; gap:28px}
+@media(min-width:900px){
+  .g-2{grid-template-columns:1.1fr .9fr; align-items:stretch}
+  .g-2-accom{grid-template-columns:1fr 1.2fr; align-items:stretch}
+}
+
+.nav{position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid rgba(0,0,0,.06); backdrop-filter:saturate(150%) blur(6px)}
+.nav-inner{max-width:var(--maxw); margin:auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+.brand{font-family:"Playfair Display",serif; color:var(--tennis); font-weight:700; letter-spacing:.3px; line-height:1.05; font-size:40px}
+@media(min-width:1024px){.brand{font-size:48px}}
+.links{display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+.links a{color:var(--charcoal); text-decoration:none; font-weight:700; font-size:14px}
+.cta-nav{padding:10px 16px; border-radius:999px; background:var(--custard); color:#111; box-shadow:var(--shadow)}
+.burger{display:none; background:none; border:0; font-size:22px}
+@media(max-width:900px){
+  .links{display:none; position:absolute; left:0; right:0; top:64px; background:#fff; border-bottom:1px solid rgba(0,0,0,.06)}
+  .links.open{display:block}
+  .links a{display:block; padding:14px 20px; border-top:1px solid rgba(0,0,0,.05)}
+  .links .cta-nav{margin:12px 20px; display:inline-block}
+  .burger{display:block}
+}
+
+.hero{position:relative; height:60vh; min-height:440px; overflow:hidden; background:#cbd5e1}
+.hero::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.38), rgba(0,0,0,.08))}
+.hero img{width:100%; height:100%; object-fit:cover}
+.hero-credit{position:absolute; bottom:8px; right:10px; font-size:12px; color:#fff; opacity:.75; z-index:2}
+
+.band{background:var(--cyclade); color:#fff; text-align:center; padding:42px 16px}
+.band h1{margin:0; font-family:"Playfair Display",serif; font-weight:700; font-size:52px; line-height:1.15}
+@media(max-width:900px){.band h1{font-size:40px}}
+
+.sec--warm{background:var(--warmwhite)}
+.sec--cyclade{background:var(--cyclade); color:#fff}
+.sec--tennis{background:var(--tennis); color:var(--warmwhite)}
+.sec--faq{background:var(--faqbg)}
+.sec--cyclade h2,.sec--cyclade h3,.sec--tennis h2,.sec--tennis h3{color:#fff}
+
+h2,h3{font-family:"Playfair Display",serif; line-height:1.2; margin:0 0 12px}
+h2{font-size:36px; color:var(--tennis)}
+h3{font-size:24px}
+p{margin:0 0 14px}
+img.block{display:block; width:100%; height:auto; border-radius:var(--radius)}
+
+/* ---------- ABOUT FEATURES: identical pill size ---------- */
+#about .features{
+  display:grid;
+  gap:12px;
+  grid-template-columns:repeat(2,1fr);
+  grid-auto-rows:var(--chipH);         /* fixed row height */
+}
+@media(min-width:700px){ #about .features{ grid-template-columns:repeat(3,1fr); } }
+@media(min-width:1000px){ #about .features{ grid-template-columns:repeat(5,1fr); } }
+
+#about .features .chip{
+  box-sizing:border-box;
+  width:100%;
+  height:var(--chipH);
+  min-height:var(--chipH);
+  padding:0 16px;                      /* horizontal only so height is fixed */
+  display:flex; align-items:center; justify-content:center;
+  gap:10px;
+  border-radius:999px;
+  background:#fff; color:var(--charcoal);
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+  font-weight:800; font-size:14px; line-height:1; text-align:center; white-space:nowrap;
+}
+#about .features .chip svg{
+  width:var(--icon); height:var(--icon); flex:0 0 var(--icon); display:block;
+}
+#about .features .chip *{ margin:0; line-height:1; } /* ensure no inner margins */
+
+/* ---------- ACCOMMODATIONS ---------- */
+.acc-card{background:#ffffff; color:var(--charcoal); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; min-height:var(--accH)}
+.acc-card h2{color:var(--cyclade)} .acc-card h3{color:var(--charcoal)}
+.btn{display:inline-block; padding:12px 18px; border-radius:999px; font-weight:800; text-decoration:none; background:#111; color:#fff; box-shadow:var(--shadow); margin-top:14px}
+.btn-custard{background:var(--custard); color:#111}
+
+/* Carousel */
+.carousel{position:relative; min-height:var(--accH); overflow:hidden;}
+.track{display:flex; gap:14px; overflow:auto; scroll-snap-type:x mandatory; height:100%; padding-bottom:6px}
+.track::-webkit-scrollbar{height:8px}
+.track::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15); border-radius:8px}
+.slide{min-width:70%; scroll-snap-align:center; height:100%}
+@media(min-width:800px){.slide{min-width:36%}}
+.slide img{width:100%; height:100%; object-fit:cover; border-radius:var(--radius); cursor:zoom-in}
+.ctrl{position:absolute; top:50%; transform:translateY(-50%); background:#fff; border:1px solid rgba(0,0,0,.1); border-radius:999px; box-shadow:var(--shadow); width:42px; height:42px; display:grid; place-items:center; cursor:pointer}
+.ctrl:disabled{opacity:.4; cursor:default}
+.ctrl.prev{left:8px} .ctrl.next{right:8px}
+
+/* Gallery */
+.gallery{display:grid; gap:14px}
+@media(min-width:1000px){.gallery{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:700px) and (max-width:999px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:699px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.gallery .tile{aspect-ratio:4/3; overflow:hidden; border-radius:12px; background:#e6ebf1; cursor:zoom-in}
+.gallery img{width:100%; height:100%; object-fit:cover; display:block}
+
+/* Lightbox */
+.lightbox{position:fixed; inset:0; background:rgba(0,0,0,.92); display:none; align-items:center; justify-content:center; z-index:2000}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw; max-height:88vh; border-radius:10px}
+.lightbox .lb-close,.lightbox .lb-prev,.lightbox .lb-next{
+  position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.3);
+  color:#fff; border-radius:999px; width:46px; height:46px; display:grid; place-items:center; font-size:22px; cursor:pointer
+}
+.lightbox .lb-close{top:24px; right:24px; transform:none; width:42px; height:42px}
+.lightbox .lb-prev{left:24px} .lightbox .lb-next{right:24px}
+
+/* FAQ */
+.faq-list{border-top:1px solid rgba(0,0,0,.12)}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.12)}
+.faq-q{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 0; cursor:pointer; font-weight:800}
+.faq-q .icon{font-size:22px; line-height:1; opacity:.75; transition:transform .25s ease}
+.faq-a{max-height:0; overflow:hidden; transition:max-height .35s ease}
+.faq-a-inner{padding:0 0 18px; color:#3f3f3f}
+.faq-item.open .faq-a{max-height:520px}
+.faq-item.open .icon{transform:rotate(45deg)}
+
+.footer-cta{position:relative; width:100%; min-height:420px; background:#cbd5e1 url('footer-cta.jpg') center/cover no-repeat; display:grid; place-items:center; overflow:hidden}
+.footer-cta::before{content:""; position:absolute; inset:0; background:rgba(0,0,0,.35)}
+.footer-cta .inner{position:relative; text-align:center; color:#fff; padding:40px 16px}
+.footer-cta h2{margin:0; font-family:"Playfair Display",serif; font-size:44px; color:#fff}
+@media(max-width:900px){.footer-cta h2{font-size:34px}}
+
+footer{padding:18px 20px; text-align:center; color:#4b5563; background:#fff}
+.small{font-size:13px; opacity:.9}
+
+/* Reveal */
+.reveal{opacity:1; transform:none;}
+.has-js .reveal{opacity:0; transform:translateY(22px);}
+.reveal.in{opacity:1; transform:none;}
+@media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} .reveal{opacity:1; transform:none} }
+
+/* === ABOUT layout & chips (requested tweaks) === */
+
+/* Make the right image larger and nicely balanced */
+@media (min-width: 900px) {
+  #about .grid {
+    grid-template-columns: 1fr 1.25fr; /* text : image */
+    align-items: stretch;
+  }
+  #about figure {
+    align-self: stretch; /* ensure the figure stretches with the text column */
+  }
+  #about figure img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;       /* graceful crop to fill */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+}
+
+/* Force the feature chips into exactly 3 rows on tablet/desktop */
+@media (min-width: 700px) {
+  #about .features {
+    /* override previous grid settings for this breakpoint+ */
+    grid-template-columns: unset;
+    grid-auto-flow: column;                  /* fill down, then across */
+    grid-template-rows: repeat(3, var(--chipH)); /* exactly 3 rows */
+    grid-auto-columns: 1fr;                  /* even column widths */
+    gap: 12px;
+  }
+}s
+</style>
+
+<script>document.documentElement.classList.add('has-js');</script>
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<style>
+  /* Availability calendar styles */
+  #availability #calendar { 
+    max-width: var(--maxw); 
+    margin: 20px auto; 
+    background:#fff; 
+    border-radius: var(--radius); 
+    box-shadow: var(--shadow); 
+    padding: 16px; 
+  }
+  .cal-legend{display:flex; gap:14px; align-items:center; font-size:14px; margin-top:10px}
+  .cal-dot{width:14px; height:14px; border-radius:3px; display:inline-block}
+  .cal-booked{background:#dc2626} /* red */
+  .cal-blocked{background:#eab308} /* amber */
+</style>
+
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/main.min.css" rel="stylesheet">
+<style>
+  :root{ --nb-maxw:1200px; --nb-radius:14px; --nb-shadow:0 10px 24px rgba(0,0,0,.08); }
+  #availability{ padding: 64px 20px; }
+  #availability .wrap{ max-width: var(--nb-maxw); margin: 0 auto; }
+  #availability h2{ margin:0 0 12px; font-size: clamp(28px, 4vw, 36px); line-height:1.2; }
+  #nb-calendar{ background:#fff; border-radius:var(--nb-radius); box-shadow:var(--nb-shadow); padding: 12px; }
+  .nb-legend{ display:flex; gap:16px; align-items:center; font-size:14px; margin-top:8px; }
+  .nb-dot{ width:14px; height:14px; border-radius:3px; display:inline-block; }
+  .nb-booked{ background:#dc2626; }     /* red */
+  .nb-blocked{ background:#eab308; }    /* amber */
+  .nb-loader{ font-size:14px; color:#666; margin-top:8px; display:none }
+  .nb-loader.show{ display:block }
+</style>
+
+</head>
+<body>
+
+<header class="nav" role="navigation" aria-label="Primary">
+  <div class="nav-inner">
+    <div class="brand">North Baptiste Lake Retreat</div>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#accommodations">Accommodations</a>
+      <a href="#outdoors">Outdoors</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a class="cta-nav js-book-open" href="#bookModal">Book Now</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="section hero" role="img" aria-label="Lakeside retreat hero image">
+  <img src="hero.jpg" alt="North Baptiste Lake and dock at sunset" width="2400" height="1350" fetchpriority="high" decoding="async" />
+  <div class="hero-credit">Book your weekend getaway in Maynooth, Ontario</div>
+</section>
+
+<section class="section band">
+  <h1>Escape to North Baptiste Lake Retreat in Maynooth, Ontario</h1>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section sec--warm">
+  <div class="container">
+    <div class="grid g-2">
+      <div class="reveal">
+        <h2>About the Retreat</h2>
+        <p>North Baptiste Lake Retreat is nestled on the shores of beautiful Baptiste Lake, between the charming villages of Bancroft and Maynooth, just south of Algonquin Park—making it the perfect halfway escape between Ottawa and Toronto. Surrounded by natural beauty and local charm, guests can swim or fish at the lake, explore Maynooth’s antique shops, or head into Bancroft, known as the “Mineral Capital of Canada,” with artisan boutiques, bakeries, family restaurants, and the famous Kawartha Dairy. Whether you’re here for lakeside relaxation, outdoor adventure, or cozy nights by the fire, the retreat offers the perfect balance of comfort, charm, and nature.</p>
+
+        <div class="features" role="list" aria-label="Retreat highlights">
+          <span class="chip" role="listitem" title="Lakeside tranquility">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 15c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2"/></svg>
+            Lakeside tranquility
+          </span>
+          <span class="chip" role="listitem" title="Cozy &amp; modern">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+            Cozy &amp; modern
+          </span>
+          <span class="chip" role="listitem" title="Forest &amp; wildlife">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l4 6h-3l3 4h-3l4 6H7l4-6H8l3-4H8l4-6z"/><path d="M12 22v-4"/></svg>
+            Forest &amp; wildlife
+          </span>
+          <span class="chip" role="listitem" title="Firepit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c2 3-1 4 0 7 1-2 3-2 4-1 2 2 2 6-4 8-6-2-6-6-4-8 1-1 3-1 4 1z"/><ellipse cx="12" cy="20" rx="7" ry="2"/></svg>
+            Firepit
+          </span>
+          <span class="chip" role="listitem" title="BBQ">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9h14a7 7 0 1 1-14 0Z"/><path d="M12 16v3"/><path d="M7 19h10"/><path d="M9 6s.5-2 3-2 3 2 3 2"/></svg>
+            BBQ
+          </span>
+          <span class="chip" role="listitem" title="Fishing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v7a4 4 0 0 0 8 0V7"/><path d="M14 12c-3 0-6 2-8 4 2 2 5 4 8 4s6-2 8-4c-2-2-5-4-8-4z"/><circle cx="18" cy="12" r="1"/></svg>
+            Fishing
+          </span>
+          <span class="chip" role="listitem" title="Swimming">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="6" r="2"/><path d="M2 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M5 12l4-2 3 1 3 2"/></svg>
+            Swimming
+          </span>
+          <span class="chip" role="listitem" title="Snowmobiling">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 16h6l4-3 4 1 3 2"/><path d="M2 19h20"/><circle cx="9" cy="16" r="1.5"/><circle cx="18" cy="16" r="1.5"/></svg>
+            Snowmobiling
+          </span>
+          <span class="chip" role="listitem" title="Canoeing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 15c4 3 14 3 18 0" />
+              <path d="M4 14c3.5-3 12.5-3 16 0" />
+              <path d="M6 14h12" stroke-linecap="round"/>
+            </svg>
+            Canoeing
+          </span>
+        </div>
+      </div>
+
+      <figure class="reveal">
+        <img class="block" src="large-house-for-rent-ontario.jpg" alt="Baptiste Lake view from the retreat deck" width="1200" height="900" loading="lazy" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMMODATIONS -->
+<section id="accommodations" class="section sec--cyclade">
+  <div class="container">
+    <div class="grid g-2-accom">
+      <article class="acc-card reveal">
+        <h2>Accommodations</h2>
+        <h3>Bedrooms</h3>
+        <p>Sleeps 8: 3 bedrooms (each with a queen bed) plus a double pull-out in the basement. 2 full bathrooms.</p>
+        <h3 style="margin-top:16px">Living Space</h3>
+        <p>Cozy seating, lake views, fireplace, smart TV.</p>
+        <h3 style="margin-top:16px">Kitchen &amp; Amenities</h3>
+        <p>Fully equipped kitchen, washer/dryer, WiFi, gym, and BBQ.</p>
+        <a href="#bookModal" class="btn btn-custard js-book-open">Book your retreat</a>
+      </article>
+
+      <div class="carousel reveal" aria-label="Accommodations gallery">
+        <button class="ctrl prev" id="accPrev" aria-label="Previous photo">‹</button>
+        <div class="track" id="accTrack">
+          <div class="slide"><img class="block" src="acc-1.jpg" alt="Bedroom with queen bed and window light" loading="lazy" width="1200" height="800" /></div>
+          <div class="slide"><img class="block" src="acc-2.jpg" alt="Living room with sofa and fireplace" loading="lazy" width="1200" height="800" /></div>
+          <div class="slide"><img class="block" src="acc-3.jpg" alt="Kitchen overview" loading="lazy" width="1200" height="800" /></div>
+          <div class="slide"><img class="block" src="acc-4.jpg" alt="Bathroom with modern finishes" loading="lazy" width="1200" height="800" /></div>
+          <div class="slide"><img class="block" src="acc-5.jpg" alt="Powder room detail" loading="lazy" width="1200" height="800" /></div>
+          <div class="slide"><img class="block" src="acc-6.jpg" alt="Second bedroom with queen bed" loading="lazy" width="1200" height="800" /></div>
+        </div>
+        <button class="ctrl next" id="accNext" aria-label="Next photo">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTDOORS -->
+<section id="outdoors" class="section sec--tennis">
+  <div class="container">
+    <div class="grid g-2">
+      <figure class="reveal">
+        <img class="block" src="canoeing-in-ontario.png" alt="Canoeing in Ontario" width="1200" height="900" loading="lazy" />
+      </figure>
+      <div class="reveal">
+        <h2>Outdoors &amp; Experiences</h2>
+        <h3>Lake Access</h3>
+        <p>Direct access to the lake with a private dock for swimming. Canoe available for use. Feel free to bring your own kayak or paddleboard. Ideal for boaters and anglers, a public boat launch sits four cottages away for easy lake access.</p>
+        <h3 style="margin-top:16px">Outdoor Features</h3>
+        <p> Deck, firepit, screen-in gazebo, and flat lawn for relaxed gatherings. </p>
+        <h3 style="margin-top:16px">Seasonal Experiences</h3>
+        <p>Swimming, canoeing, hiking trails, snowshoeing, snowmobiling, stargazing and granite stairs to walk into the hard-bottom sand lake.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section sec--warm">
+  <div class="container">
+    <h2 class="reveal">See the Retreat</h2>
+    <p class="reveal">Natural beauty at every turn.</p>
+    <div class="gallery" aria-label="Photo gallery" id="galleryGrid">
+      <div class="tile reveal"><img src="gal-1.jpg"  alt="Aerial view of cottage and Baptiste Lake shoreline" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-2.jpg"  alt="Entry hallway with hooks and mirror" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-3.jpg"  alt="Cozy reading nook by the window" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-4.jpg"  alt="Bright sunroom and living area with skylights" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-5.jpg"  alt="Living room with sectional sofa and TV" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-6.jpg"  alt="Kitchen with stainless appliances" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-7.jpg"  alt="Kitchen island and dining area" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-8.jpg"  alt="Dining room with table set for a meal" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-9.jpg"  alt="Compact home gym and fitness space" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-10.jpg" alt="Deck with lake view and seating" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-11.jpg" alt="Covered patio with fire table" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-12.jpg" alt="Back exterior of cottage with raised deck" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-13.jpg" alt="Bedroom detail with soft linens" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-14.jpg" alt="Cozy seating area by large windows" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-15.jpg" alt="Morning light on the dock" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-16.jpg" alt="Pathway through trees toward the lake" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-17.jpg" alt="Games room with projector setup" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-18.jpg" alt="Foosball and family game night" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-19.jpg" alt="Firepit gathering under the stars" loading="lazy" width="1200" height="900" /></div>
+      <div class="tile reveal"><img src="gal-20.jpg" alt="Sunset over Baptiste Lake" loading="lazy" width="1200" height="900" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section sec--faq">
+  <div class="container">
+    <h2 class="reveal">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">Where is North Baptiste Lake Retreat located? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>North Baptiste Lake Retreat is located on Baptiste Lake between Bancroft and Maynooth in Ontario’s cottage country, just south of Algonquin Park.</p>
+          <p><strong>From Toronto:</strong> Hwy 401 East → 115 North → 7 East → 28 North to Bancroft. (Approx. 3 hours)</p>
+          <p><strong>From Ottawa/Montreal:</strong> Hwy 417/17 to Renfrew → 132 → 41 to Denbigh → 28 to Bancroft. (Approx. 2.5 hours from Ottawa)</p>
+          <p><strong>From Bancroft (20 min):</strong> 62 North for 17 km → left on North Baptiste Lake Road for 8 km (keep left at the split) to fire sign #1787.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What activities can guests enjoy at the retreat? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Swim, canoe, kayak, or paddleboard on Baptiste Lake; visit Papineau Beach or Lake St. Peter Provincial Park for larger sandy beaches. Explore Maynooth’s antique shops or stargaze by the firepit.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">How many people can the retreat accommodate? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Up to 8 individuals across three bedrooms (each with a queen bed), one pull-out double bed, and two full bathrooms.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Is North Baptiste Lake Retreat pet-friendly? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>We love animals, but North Baptiste Lake Retreat is a pet-free space to keep the cottage fresh and comfortable for all guests.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">What amenities are included with the stay? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Wi-Fi and smart TV. Air coniditioning and UV-filtered well water. Kitchen essentials plus washer/dryer. Propane fireplace in basement. Gym.  Outdoors: deck, firepit, and lake access for swimming and paddling.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">How do I book North Baptiste Lake Retreat? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Click the Book Now button below to reserve your dates, or contact us for availability. Summer Rate (May 1-September 30): $350/night. Winter Rate (October 1 - April 30): $250/night After confirmation, we’ll share all arrival details.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Is the retreat available year-round? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes—open every season including warm summer nights, vibrant autumn colors, cozy winter evenings by the fire, and peaceful spring mornings.</p>
+        </div></div></div>
+        <div class="faq-item reveal">
+        <div class="faq-q"> Can I book the retreat for one night? <span class="icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No, the retreat is only available to book for two nights minimum.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="availability">
+  <div class="wrap">
+    <h2>Availability</h2>
+    <p>Dates in red are booked and are not available.</p>
+    <div id="nb-calendar" aria-label="Availability calendar"></div>
+    <p id="nb-loading" class="nb-loader show">Loading availability…</p>
+    <div class="nb-legend" aria-hidden="true">
+      <span class="nb-dot nb-booked" title="Booked"></span> Booked
+      <span class="nb-dot nb-blocked" title="Blocked"></span> Pending
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script>
+(function(){
+  const SHEET_CSV = 'https://docs.google.com/spreadsheets/d/1Qf3FQnPdysMZGS5mMWBDH7Nzvy63D_BGp8gX7YpKoSE/gviz/tq?tqx=out:csv';
+  const calEl = document.getElementById('nb-calendar');
+  const loader = document.getElementById('nb-loading');
+
+  function addDays(dateStr, days){
+    const d = new Date(dateStr + 'T00:00:00');
+    d.setDate(d.getDate() + days);
+    return d.toISOString().slice(0,10);
+  }
+
+  function parseCSV(text){
+    const rows = [];
+    let i=0, field='', row=[], inQuotes=false;
+    while(i < text.length){
+      const c = text[i];
+      if(c === '"'){
+        if(inQuotes && text[i+1] === '"'){ field += '"'; i++; }
+        else { inQuotes = !inQuotes; }
+      }else if(c === ',' && !inQuotes){
+        row.push(field); field='';
+      }else if((c === '\n' || c === '\r') && !inQuotes){
+        if(field.length || row.length){ row.push(field); rows.push(row); }
+        field=''; row=[];
+      }else{
+        field += c;
+      }
+      i++;
+    }
+    if(field.length || row.length){ row.push(field); rows.push(row); }
+
+    if(!rows.length) return [];
+    const header = rows[0].map(h => (h||'').trim().toLowerCase());
+    const iStart = header.findIndex(h => h.includes('start'));
+    const iEnd   = header.findIndex(h => h.includes('end'));
+    const iStat  = header.findIndex(h => h.includes('status') || h.includes('type'));
+
+    const out = [];
+    for(let r=1; r<rows.length; r++){
+      const cells = rows[r];
+      const start = (cells[iStart]||'').trim();
+      if(!start) continue;
+      const end   = iEnd>=0 ? (cells[iEnd]||'').trim() : '';
+      const status= iStat>=0 ? (cells[iStat]||'').trim() : 'Booked';
+      out.push({start, end, status});
+    }
+    return out;
+  }
+
+  function rowsToEvents(rows){
+    return rows.map(r => {
+      const booked = (r.status||'').toLowerCase().includes('book');
+      const color = booked ? '#dc2626' : '#eab308';
+      const s = r.start;
+      const e = r.end ? addDays(r.end, 1) : addDays(r.start, 1);
+      return { start:s, end:e, title:r.status||'Booked', allDay:true, color, display:'block' };
+    });
+  }
+
+  async function loadEvents(){
+    try{
+      const res = await fetch(SHEET_CSV, {cache:'no-store'});
+      if(!res.ok) throw new Error('fetch');
+      const txt = await res.text();
+      const rows = parseCSV(txt);
+      return rowsToEvents(rows);
+    }catch(e){
+      return []; // silent: render empty calendar
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async function(){
+    if(!calEl){ return; }
+    const events = await loadEvents();
+    const cal = new FullCalendar.Calendar(calEl, {
+      initialView: 'dayGridMonth',
+      height: 'auto',
+      firstDay: 0,
+      dayMaxEventRows: true,
+      displayEventTime: false,
+      events,
+      headerToolbar: { left: 'prev,next Today', center: 'title', right: 'dayGridMonth,listWeek' },
+      eventDidMount: function(info){ info.el.title = info.event.title; }
+    });
+    cal.render();
+    if(loader) loader.classList.remove('show');
+  });
+})();
+</script>
+
+<!-- FOOTER CTA -->
+<section id="booking" class="footer-cta" aria-label="Your Lakeside Escape awaits">
+  <div class="inner">
+    <h2>Your Lakeside Escape awaits</h2>
+    <a class="btn js-book-open" href="#bookModal" aria-label="Book now">Book now</a>
+  </div>
+</section>
+
+<footer>
+  <div class="small">© <span id="year"></span> North Baptiste Lake Retreat — Maynooth, Ontario</div>
+</footer>
+
+<script>
+// Year
+var y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); }
+
+// Nav
+var burger=document.getElementById('burger');
+var links=document.getElementById('navLinks');
+if(burger && links){
+  burger.addEventListener('click', function(){
+    var open=links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  var navAs=links.querySelectorAll('a');
+  for(var i=0;i<navAs.length;i++){
+    navAs[i].addEventListener('click', function(){ links.classList.remove('open'); });
+  }
+}
+
+// Reveal
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+}else{ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+
+// FAQ
+document.querySelectorAll('.faq-item .faq-q').forEach(function(q){
+  q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
+});
+
+// Carousel
+var track=document.getElementById('accTrack'), prev=document.getElementById('accPrev'), next=document.getElementById('accNext');
+function updateCtrl(){ if(!track||!prev||!next) return; prev.disabled = track.scrollLeft<=0; var max=track.scrollWidth-track.clientWidth-1; next.disabled = track.scrollLeft>=max; }
+function scrollAmt(dir){ if(!track) return; var amt=Math.min(track.clientWidth,700)*dir; track.scrollBy({left:amt,behavior:'smooth'}); setTimeout(updateCtrl,350); }
+if(prev) prev.addEventListener('click', function(){ scrollAmt(-1); });
+if(next) next.addEventListener('click', function(){ scrollAmt(1); });
+if(track){ track.addEventListener('scroll', updateCtrl, {passive:true}); window.addEventListener('resize', updateCtrl); updateCtrl(); }
+
+// Lightbox
+var galleryImgs=document.querySelectorAll('#galleryGrid img');
+var accImgs=document.querySelectorAll('#accTrack img');
+var lb=document.createElement('div'); lb.className='lightbox';
+lb.innerHTML='<button class="lb-close" aria-label="Close">×</button><button class="lb-prev" aria-label="Previous">‹</button><img alt=""><button class="lb-next" aria-label="Next">›</button>';
+document.body.appendChild(lb);
+var lbImg=lb.querySelector('img'), lbClose=lb.querySelector('.lb-close'), lbPrev=lb.querySelector('.lb-prev'), lbNext=lb.querySelector('.lb-next');
+var set=[], idx=0;
+function openLB(i, s){ set=s; idx=i; var el=set[idx]; lbImg.src=el.getAttribute('src'); lbImg.alt=el.getAttribute('alt')||''; lb.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+function move(n){ idx=(idx+n+set.length)%set.length; var el=set[idx]; lbImg.src=el.getAttribute('src'); lbImg.alt=el.getAttribute('alt')||''; }
+galleryImgs.forEach(function(im,i){ im.addEventListener('click', function(){ openLB(i, galleryImgs); }); });
+accImgs.forEach(function(im,i){ im.addEventListener('click', function(){ openLB(i, accImgs); }); });
+lbClose.addEventListener('click', closeLB);
+lb.addEventListener('click', function(e){ if(e.target===lb) closeLB(); });
+lbPrev.addEventListener('click', function(){ move(-1); });
+lbNext.addEventListener('click', function(){ move(1); });
+window.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') closeLB(); if(e.key==='ArrowRight') move(1); if(e.key==='ArrowLeft') move(-1); });
+</script>
+
+<!-- Book Now modal -->
+<div class="nb-modal" id="bookModal" aria-hidden="true">
+  <div class="nb-modal__backdrop" onclick="this.parentElement.setAttribute('aria-hidden','true')"></div>
+
+  <div class="nb-modal__dialog">
+    <button class="nb-modal__close" type="button"
+      onclick="document.getElementById('bookModal').setAttribute('aria-hidden','true')">×</button>
+
+    <h3 class="nb-modal__title">Book your stay</h3>
+    <p class="nb-modal__sub">Fill out your info and we’ll confirm availability by email.</p>
+
+    <form action="https://formspree.io/f/mdkpzkwd" method="POST">
+      <label>
+        Full name:
+        <input type="text" name="name" required>
+      </label>
+
+      <label>
+        Email address:
+        <input type="email" name="email" required>
+      </label>
+
+      <label>
+        Check-in date:
+        <input type="date" name="check_in" required>
+      </label>
+
+      <label>
+        Check-out date:
+        <input type="date" name="check_out" required>
+      </label>
+
+      <button type="submit">Send booking request</button>
+    </form>
+
+    <p class="nb-thanks" hidden id="thanksMsg">Thank you! Your request has been sent. 🌲</p>
+  </div>
+</div>
+
+<script>
+  // Simple open/close logic for all CTAs
+  document.querySelectorAll('.js-book-open').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      document.getElementById('bookModal').setAttribute('aria-hidden','false');
+    });
+  });
+</script>
+
+<style>
+  .nb-modal{position:fixed;inset:0;display:none;z-index:1000}
+  .nb-modal[aria-hidden="false"]{display:block}
+  .nb-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
+  .nb-modal__dialog{position:relative;max-width:480px;margin:5% auto;background:#fff;
+    padding:24px;border-radius:10px;z-index:1}
+  .nb-modal__close{position:absolute;right:12px;top:12px;font-size:22px;border:none;background:none;cursor:pointer}
+  form label{display:block;margin-bottom:10px;font-weight:600}
+  input,textarea{width:100%;padding:8px;border:1px solid #ccc;border-radius:6px}
+  button{background:#DC9F2A;color:#111;border:none;padding:10px 16px;border-radius:6px;
+    cursor:pointer;font-weight:700}
+</style>
+
+</body>
+</html>
